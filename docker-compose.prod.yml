@@ -1,0 +1,41 @@
+# 生产覆盖：docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+# 不对外暴露任何端口，只由宿主机 Traefik（host 网络）按域名转发到 nginx 容器。
+services:
+  mysql:
+    ports: !reset []
+    restart: unless-stopped
+  redis:
+    ports: !reset []
+    restart: unless-stopped
+  chroma:
+    ports: !reset []
+    restart: unless-stopped
+  backend:
+    ports: !reset []
+    restart: unless-stopped
+    volumes: !reset
+      - uploads:/app/uploads
+      - models:/models
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    ports: !reset []
+    volumes: !reset []
+    command: !reset []
+    restart: unless-stopped
+  nginx:
+    ports: !reset []
+    restart: unless-stopped
+    labels:
+      traefik.enable: "true"
+      # 正式域名（Cloudflare A 记录指向本机，DNS only）
+      traefik.http.routers.copilot.rule: "Host(`${COPILOT_HOST:-copilot.quietcompile.tech}`)"
+      traefik.http.routers.copilot.entrypoints: websecure
+      traefik.http.routers.copilot.tls.certresolver: letsencrypt
+      # 备用：Hostinger 泛解析域名，独立 router 以免影响正式域名签证书
+      traefik.http.routers.copilot-alt.rule: "Host(`copilot.srv1824440.hstgr.cloud`)"
+      traefik.http.routers.copilot-alt.entrypoints: websecure
+      traefik.http.routers.copilot-alt.tls.certresolver: letsencrypt
+      traefik.http.services.copilot.loadbalancer.server.port: "80"

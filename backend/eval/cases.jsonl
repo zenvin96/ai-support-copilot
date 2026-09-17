@@ -1,0 +1,20 @@
+{"query": "订单 #123 为什么没发货？帮我查一下并通知客户。", "intent": "order_inquiry", "tools": ["execute_sql"], "doc": "shipping_policy.md"}
+{"query": "退款政策是什么？", "intent": "knowledge_qa", "tools": [], "doc": "refund_policy.md"}
+{"query": "七天无理由退货需要什么条件", "intent": "knowledge_qa", "tools": [], "doc": "refund_policy.md"}
+{"query": "订单124现在到哪了", "intent": "order_inquiry", "tools": ["execute_sql", "get_shipping_status"], "doc": "shipping_policy.md"}
+{"query": "你好", "intent": "chit_chat", "tools": [], "doc": null}
+{"query": "耳机续航多久", "intent": "knowledge_qa", "tools": [], "doc": "product_faq.md"}
+{"query": "订单 125 客户说没收到货", "intent": "order_inquiry", "tools": ["execute_sql"], "doc": "shipping_policy.md"}
+{"query": "满多少钱包邮", "intent": "knowledge_qa", "tools": [], "doc": "shipping_policy.md"}
+{"query": "拆封的耳机能退吗", "intent": "knowledge_qa", "tools": [], "doc": "refund_policy.md"}
+{"query": "126 号订单付款两天了还没发货，客户催了", "intent": "order_inquiry", "tools": ["execute_sql"], "doc": "shipping_policy.md"}
+{"query": "谢谢你，辛苦了", "intent": "chit_chat", "tools": [], "doc": null}
+{"query": "微信支付的退款多久到账", "intent": "knowledge_qa", "tools": [], "doc": "refund_policy.md"}
+{"query": "包裹丢了怎么处理", "intent": "knowledge_qa", "tools": [], "doc": "shipping_policy.md"}
+{"query": "显示器有一个亮点可以换吗", "intent": "knowledge_qa", "tools": [], "doc": "product_faq.md"}
+{"query": "查一下订单127的状态", "intent": "order_inquiry", "tools": ["execute_sql"], "doc": null}
+{"query": "金卡会员有什么权益", "intent": "knowledge_qa", "tools": [], "doc": "product_faq.md"}
+{"query": "机械键盘保修几年", "intent": "knowledge_qa", "tools": [], "doc": "product_faq.md"}
+{"query": "今天天气不错", "intent": "chit_chat", "tools": [], "doc": null}
+{"query": "运单两天没更新了怎么办", "intent": "knowledge_qa", "tools": [], "doc": "shipping_policy.md"}
+{"query": "帮我看下 123 订单能不能给客户退款", "intent": "order_inquiry", "tools": ["execute_sql"], "doc": "refund_policy.md"}
